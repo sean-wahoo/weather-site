@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "styles/MainWeather.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDroplet, faWind, faSun } from "@fortawesome/free-solid-svg-icons";
@@ -27,10 +28,13 @@ export const MainWeather = ({ degree, data }: any) => {
       <div className={styles.main_info}>
         <section className={`${styles.block} ${styles.temp_and_weather}`}>
           <h1 className={`${temp_style} ${styles.main_temp}`}>{temp}</h1>
-          <img className={styles.weather_icon} src={weather_icon} />
-          <h2 className={`${temp_style} ${styles.minmax_temp}`}>
-            {temp_max}
-          </h2>{" "}
+          <Image
+            width={100}
+            height={100}
+            className={styles.weather_icon}
+            src={weather_icon}
+          />
+          <h2 className={`${temp_style} ${styles.minmax_temp}`}>{temp_max}</h2>{" "}
           <h2
             className={`${temp_style} ${styles.minmax_temp}`}
             style={{ marginLeft: "1rem", opacity: 0.6 }}
@@ -68,7 +72,12 @@ export const MainWeather = ({ degree, data }: any) => {
             return (
               <div className={styles.day} key={i}>
                 <h6 className={styles.weekday_name}>{weekday_name}</h6>
-                <img className={styles.weather_icon} src={day.weather_icon} />
+                <Image
+                  width={70}
+                  height={70}
+                  className={styles.weather_icon}
+                  src={day.weather_icon}
+                />
 
                 <h6 className={`${temp_style} ${styles.main_temp}`}>{temp}</h6>
               </div>
