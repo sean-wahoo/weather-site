@@ -1,16 +1,9 @@
 import type { NextPage, GetServerSideProps } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "styles/index.module.scss";
-import { WeatherBlock, MainWeather } from "components";
+import { MainWeather } from "components";
 import { parseMainWeather } from "utils/conversions";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 
-interface MainWeatherData {
-  city: string;
-  lat: string;
-  lon: string;
-}
 interface WeatherData {
   mainWeather: any;
   resolvedWeatherDataArray: any;
@@ -40,20 +33,6 @@ const Home: NextPage<WeatherData> = ({ mainWeather }) => {
         </h1>
         <MainWeather degree={degree} data={mainWeather} />
       </div>
-
-      {/* <header className={styles.hero}>
-        <section className={styles.welcome_section}>
-          <p>Check the weather in your city!</p>
-          <input type="text" />
-        </section>
-
-        <MainWeather data={props.parsedMainWeatherData} />
-      </header>
-      <div className={styles.big_weather_grid}>
-        {props.resolvedWeatherDataArray.map((w: any) => {
-          return <WeatherBlock data={w} />;
-        })}
-      </div> */}
     </main>
   );
 };
@@ -61,11 +40,6 @@ const Home: NextPage<WeatherData> = ({ mainWeather }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const api_key = process.env.API_KEY;
 
-  // const weatherRes = await (
-  //   await fetch(
-  //     `https://api.openweathermap.org/data/2.5/onecall?lat=${query.lat}&lon=${query.lon}&appid=${api_key}`
-  //   )
-  // ).json();
   let weatherRes: any = await fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${query.lat}&lon=${query.lon}&appid=${api_key}`
   );
@@ -95,39 +69,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       mainWeather: { ...weatherRes },
     },
   };
-  // const weatherDataArray = cities.map(async (city: any) => {
-  //   const data = await (
-  //     await fetch(
-  //       `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&appid=${api_key}`
-  //     )
-  //   ).json();
-  //   const parsed = parseMainWeather(data);
-  //   parsed.city = city.city as string;
-  //   parsed.lat = city.lat as string;
-  //   parsed.lon = city.lon as string;
-  //   return parsed;
-  // });
-
-  // const resolvedWeatherDataArray = await Promise.all(weatherDataArray);
-
-  // const weatherRes = await (
-  //   await fetch(
-  //     `https://api.openweathermap.org/data/2.5/onecall?lat=${query.lat}&lon=${query.lon}&appid=${api_key}`
-  //   )
-  // ).json();
-
-  // const parsedMainWeatherData = parseMainWeather(weatherRes);
-  // parsedMainWeatherData.city = query.city as string;
-  // parsedMainWeatherData.lat = query.lat as string;
-  // parsedMainWeatherData.lon = query.lon as string;
-  // parsedMainWeatherData.main = true;
-
-  // return {
-  //   props: {
-  //     parsedMainWeatherData,
-  //     resolvedWeatherDataArray,
-  //   },
-  // };
 };
 
 export default Home;

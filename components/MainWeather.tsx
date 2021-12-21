@@ -1,5 +1,4 @@
 import styles from "styles/MainWeather.module.scss";
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDroplet, faWind, faSun } from "@fortawesome/free-solid-svg-icons";
 
@@ -67,7 +66,7 @@ export const MainWeather = ({ degree, data }: any) => {
             if (weekday_num > 6) weekday_num = weekday_num - 7;
             const weekday_name = days[weekday_num];
             return (
-              <div className={styles.day}>
+              <div className={styles.day} key={i}>
                 <h6 className={styles.weekday_name}>{weekday_name}</h6>
                 <img className={styles.weather_icon} src={day.weather_icon} />
 

@@ -32,9 +32,9 @@ export const WeatherBlock = ({ data }: any) => {
       </div>
       {main && (
         <div className={styles.weekdays}>
-          {data.week.map((day: any) => {
+          {data.week.map((day: any, i: number) => {
             return (
-              <div className={styles.weekday}>
+              <div className={styles.weekday} key={i}>
                 <img src={day.weather_icon} className={styles.weekday} />
                 <div>
                   <span>
