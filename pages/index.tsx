@@ -20,6 +20,13 @@ const Home: NextPage<WeatherData> = ({ mainWeather }) => {
   const [degree, changeDegree] = useState<string>("f");
   return (
     <main className={styles.main}>
+      <section className={styles.hero}>
+        <h1>This is a little weather app I made.</h1>
+        <p>
+          If your location is enabled, it shows you the weather for your
+          location.
+        </p>
+      </section>
       <div className={styles.weather_data_area}>
         <h1
           className={styles.degreeToggle}

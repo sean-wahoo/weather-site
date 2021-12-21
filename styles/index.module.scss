@@ -8,6 +8,10 @@
   justify-content: flex-start;
   align-items: center;
 
+  .hero {
+    display: flex;
+  }
+
   .weather_data_area {
     max-width: 1024px;
     width: 100%;
