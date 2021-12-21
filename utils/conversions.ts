@@ -22,8 +22,8 @@ export const capitalize = (s: string) => {
 export const parseMainWeather = (data: any) => {
   const week: any = data.daily.map((day: any) => {
     return {
-      temp_f: ktof(day.temp.day),
-      temp_c: ktoc(day.temp.day),
+      temp_f: Math.round(ktof(day.temp.day)),
+      temp_c: Math.round(ktoc(day.temp.day)),
       weather_description: capitalize(day.weather[0].description),
       weather_icon: `https://openweathermap.org/img/wn/${day.weather[0].icon}.png`,
     };
@@ -35,12 +35,12 @@ export const parseMainWeather = (data: any) => {
     lat: "",
     lon: "",
     current: {
-      temp_f: ktof(data.current.temp),
-      temp_c: ktoc(data.current.temp),
-      temp_min_f: ktof(data.daily[0].temp.min),
-      temp_min_c: ktoc(data.daily[0].temp.min),
-      temp_max_f: ktof(data.daily[0].temp.max),
-      temp_max_c: ktoc(data.daily[0].temp.max),
+      temp_f: Math.round(ktof(data.current.temp)),
+      temp_c: Math.round(ktoc(data.current.temp)),
+      temp_min_f: Math.round(ktof(data.daily[0].temp.min)),
+      temp_min_c: Math.round(ktoc(data.daily[0].temp.min)),
+      temp_max_f: Math.round(ktof(data.daily[0].temp.max)),
+      temp_max_c: Math.round(ktoc(data.daily[0].temp.max)),
       feels_like: data.current.feels_like,
       weather_description: capitalize(data.current.weather[0].description),
       weather_icon: `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`,
