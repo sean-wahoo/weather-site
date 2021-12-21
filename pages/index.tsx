@@ -130,6 +130,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     lat: query.lat,
     lon: query.lon,
     city: query.city,
+    state: query.state,
   };
 
   // const cities: object[] = [

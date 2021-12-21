@@ -11,6 +11,7 @@ export async function middleware(req: NextRequest) {
   state ||= codeToName(state);
 
   url.searchParams.set("city", city);
+  url.searchParams.set("state", state);
   url.searchParams.set("lat", latitude.toString());
   url.searchParams.set("lon", longitude.toString());
 
