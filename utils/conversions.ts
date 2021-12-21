@@ -35,6 +35,9 @@ export const parseMainWeather = (data: any) => {
     lat: "",
     lon: "",
     current: {
+      uvi: data.current.uvi,
+      wind_speed: data.current.wind_speed,
+      humidity: data.current.humidity,
       temp_f: Math.round(ktof(data.current.temp)),
       temp_c: Math.round(ktoc(data.current.temp)),
       temp_min_f: Math.round(ktof(data.daily[0].temp.min)),
