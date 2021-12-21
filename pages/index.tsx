@@ -31,7 +31,7 @@ const Home: NextPage<WeatherData> = ({ mainWeather, api_key }) => {
       if (!code) throw new Error("Please provide a valid state!");
 
       let data: any = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city},${code},US&limit=5&appid=${api_key}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city},${code},US&limit=5&appid=${api_key}`
       );
       data = await data.json();
       let weatherRes: any = await fetch(
