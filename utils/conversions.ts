@@ -25,7 +25,7 @@ export const parseMainWeather = (data: any) => {
       temp_f: Math.round(ktof(day.temp.day)),
       temp_c: Math.round(ktoc(day.temp.day)),
       weather_description: capitalize(day.weather[0].description),
-      weather_icon: `https://openweathermap.org/img/wn/${day.weather[0].icon}.png`,
+      weather_icon: `https://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png`,
     };
   });
 
@@ -46,7 +46,7 @@ export const parseMainWeather = (data: any) => {
       temp_max_c: Math.round(ktoc(data.daily[0].temp.max)),
       feels_like: data.current.feels_like,
       weather_description: capitalize(data.current.weather[0].description),
-      weather_icon: `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`,
+      weather_icon: `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@4x.png`,
     },
     week,
   };
